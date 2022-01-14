@@ -3,7 +3,7 @@ const cors=require('cors')
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient('mongodb://localhost:27017', { useNewUrlParser: true });
 let db;
-
+const routerLostAndFound=require('./router/lostFoundRouter')
 
 const app=express();
 
@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     }
   })
   
- 
+  app.use('/lostFound', routerLostAndFound )
 
 
   app.use(function (err, req, res, next) {
